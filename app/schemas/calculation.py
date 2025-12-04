@@ -36,6 +36,7 @@ class CalculationType(str, Enum):
     SUBTRACTION = "subtraction"
     MULTIPLICATION = "multiplication"
     DIVISION = "division"
+    MODULUS = "modulus"
 
 class CalculationBase(BaseModel):
     """
@@ -130,6 +131,10 @@ class CalculationBase(BaseModel):
             # Prevent division by zero (skip the first value as numerator)
             if any(x == 0 for x in self.inputs[1:]):
                 raise ValueError("Cannot divide by zero")
+        if self.type == CalculationType.MODULUS:
+            # Prevent modulus by zero (skip the first value as numerator)
+            if any(x == 0 for x in self.inputs[1:]):
+                raise ValueError("Cannot perform modulus by zero")
         return self
 
     model_config = ConfigDict(
