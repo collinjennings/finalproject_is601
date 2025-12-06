@@ -1,4 +1,4 @@
-# Assignment 14 - Complete BREAD Functionality for Calculations
+# Final Project - Python Web App Calculator
 
 This repository is a dockerized web calculator application, which uses SQLAlchemy and Pydantic to validate new users and add them to a Postgres database. This version of the APP implements BREAD endpoints for the calculations: 
 - **Browse (GET /calculations)**: Retrieve and display all calculations belonging to the logged-in user.

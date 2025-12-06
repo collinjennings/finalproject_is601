@@ -385,5 +385,7 @@ class Modulus(Calculation):
             raise ValueError("Inputs must be a list with at least two numbers.")
         result = self.inputs[0]
         for value in self.inputs[1:]:
+            if value == 0:
+                raise ValueError("Cannot perform modulus by zero.")
             result %= value
         return result

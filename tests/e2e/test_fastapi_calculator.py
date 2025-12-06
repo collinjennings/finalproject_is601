@@ -318,3 +318,14 @@ def test_model_division():
     with pytest.raises(ValueError):
         calc_zero = Calculation.create("division", dummy_user_id, [100, 0])
         calc_zero.get_result()
+
+def test_model_modulus():
+    dummy_user_id = uuid4()
+    calc = Calculation.create("modulus", dummy_user_id, [10, 3])
+    result = calc.get_result()
+    assert result == 1, f"Modulus result incorrect: expected 1, got {result}"
+    
+    # Test modulus by zero error
+    with pytest.raises(ValueError):
+        calc_zero = Calculation.create("modulus", dummy_user_id, [10, 0])
+        calc_zero.get_result()
